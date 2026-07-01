@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Player - Simple Stream Demo</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <h1 id="playerHeading">Now Playing</h1>
+      <p>
+        <a id="backLink" href="./index.html" style="color: #b4bfdc; text-decoration: underline">Back to Movies</a>
+      </p>
+    </header>
+
+    <main class="container">
+      <section class="player" aria-live="polite">
+        <!-- Tap-to-play overlay shown on mobile instead of iframe -->
+        <div id="mobileOverlay" class="mobile-overlay hidden" role="button" tabindex="0" aria-label="Tap to open video">
+          <div class="play-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="44" height="44"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <p class="overlay-label">Tap to Play</p>
+        </div>
+        <iframe
+          id="drivePlayer"
+          title="Google Drive Video Player"
+          allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+          allowfullscreen
+          playsinline
+          loading="lazy"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-presentation allow-popups-to-escape-sandbox"
+        ></iframe>
+      </section>
+
+      <section class="player-actions" aria-live="polite">
+        <a
+          id="tryHighQuality"
+          class="action-btn"
+          target="_blank"
+          rel="noopener noreferrer"
+          href="#"
+          title="Try viewing in Google Drive - may offer better quality"
+        >
+          Try High Quality (Google Drive)
+        </a>
+        <a
+          id="openInPreview"
+          class="action-btn action-btn-secondary"
+          target="_blank"
+          rel="noopener noreferrer"
+          href="#"
+        >
+          Open Preview in New Tab
+        </a>
+        <a
+          id="downloadVideo"
+          class="action-btn action-btn-secondary"
+          target="_blank"
+          rel="noopener noreferrer"
+          href="#"
+          download
+        >
+          Download Video (Full Quality)
+        </a>
+      </section>
+
+      <section id="playerInfo" class="hint hidden">
+        <h2>Playback tip</h2>
+        <p>
+          Mobile browsers sometimes block Drive iframe playback. If video does not start, try opening it in a new tab or downloading it directly.
+        </p>
+      </section>
+
+      <section id="playerError" class="hint hidden">
+        <h2>Playback unavailable</h2>
+        <p>
+          <strong>If you see "download only":</strong> The file's sharing permissions are restricted. 
+          <br>Fix: Right-click the file in Google Drive → Share → Change from "Download only" to "Viewer"
+        </p>
+      </section>
+
+      <section class="hint">
+        <h2>Video Quality Issues?</h2>
+        <p>
+          <strong>Why is quality limited even for large files?</strong> Google Drive's embedded preview automatically downscales videos to reduce bandwidth.
+        </p>
+        <p><strong>Choose the right option for your needs:</strong></p>
+        <ul style="margin-left: 20px; color: #b4bfdc;">
+          <li><strong>Try High Quality (Google Drive):</strong> Opens the file in Google Drive's native viewer - may provide adaptive quality options.</li>
+          <li><strong>Open Preview in New Tab:</strong> Uses the embedded player in a full tab - slightly better than the popup embed.</li>
+          <li><strong>Download Video (Full Quality):</strong> Best quality - downloads the complete file locally for playback with any media player.</li>
+          <li><strong>For best experience:</strong> Download the video if you have storage space - you'll get full resolution and can watch offline.</li>
+        </ul>
+      </section>
+    </main>
+
+    <script src="./player.js"></script>
+  </body>
+</html>
